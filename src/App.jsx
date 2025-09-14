@@ -4,10 +4,10 @@ import useCurrencyInfo from "../hooks/useCurrencyInfo";
 import "./App.css";
 
 const App = () => {
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState(null);
   const [from, setFrom] = useState("usd");
   const [to, setTo] = useState("inr");
-  const [convertedAmount, setConvertedAmount] = useState("");
+  const [convertedAmount, setConvertedAmount] = useState(null);
 
   const currencyInfo = useCurrencyInfo(from);
   const options = Object.keys(currencyInfo);
@@ -30,7 +30,8 @@ const App = () => {
           "url('https://images.pexels.com/photos/316902/pexels-photo-316902.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')",
       }}
     >
-      <div className="w-full ">
+      <div className="w-full px-4">
+        <h1 className="text-5xl md:text-5xl lg:text-7xl font-bold pb-30 text-neutral-300 text-center">Currency Converter</h1>
         <div className="w-full max-w-md    mx-auto border border-gray-60 rounded-lg p-6 backdrop-blur-sm  bg-white/15">
           <form
             onSubmit={(e) => {
@@ -53,7 +54,7 @@ const App = () => {
               <button
                 type="button"
                 onClick={swap}
-                className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-white rounded-md bg-blue-600 text-white px-2 py-0.5"
+                className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-white ring-2 ring-neutral-800  active:scale-105 rounded-md bg-neutral-800 text-white px-2 py-0.5"
               >
                 SWAP
               </button>
@@ -70,7 +71,7 @@ const App = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg cursor-pointer"
+              className="w-full bg-neutral-900 text-shadow-sm active:scale-105 text-white px-4 py-3 rounded-lg cursor-pointer"
             >
               Convert {`${from.toUpperCase()} to ${to.toUpperCase()}`}
             </button>
